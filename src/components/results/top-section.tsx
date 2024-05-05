@@ -5,7 +5,6 @@ import SearchInput from "../shared/inputs/search-input";
 import Button from "../shared/controls/button";
 import PlusIcon from "../shared/icons/plus-icon";
 import { useNavigate } from "react-router-dom";
-import { useEffect } from "react";
 
 interface IProps {
   query: string;
