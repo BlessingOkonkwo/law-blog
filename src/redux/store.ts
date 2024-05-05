@@ -24,7 +24,7 @@ export const store = configureStore({
       //   immutableCheck: false,
     }).concat(baseApiSlice.middleware),
 
-  devTools: process.env.NODE_ENV !== "production",
+  devTools: true,
 });
 
 // enable listener behavior for the store
