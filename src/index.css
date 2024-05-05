@@ -31,11 +31,19 @@
 
 @layer components {
   #root {
-    @apply h-full w-full
+    @apply h-full w-full;
   }
+
+  /* html {
+    @apply bg-[#f2f2f2];
+  } */
 }
 
 body {
   height: 100vh;
   min-height: 100vh;
+}
+
+html {
+  background: #f2f2f2 !important;
 }

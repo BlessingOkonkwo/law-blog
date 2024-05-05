@@ -14,7 +14,7 @@ const router = createBrowserRouter([
     children: [
       { index: true, element: <Results /> },
       {
-        path: "create-article",
+        path: "/create-article",
         element: <CreateArticle />,
       },
     ],

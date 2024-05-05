@@ -4,12 +4,12 @@ import Footer from './footer'
 
 const Layout = () => {
   return (
-    <div>
+    <div className='bg-[#f2f2f2]'>
       <Header />
-      <main className='mt-[50px]'>
+      <main className='mt-[50px] pb-[70px] h-full bg-[#f2f2f2] px-16 py-6'>
         <Outlet />
       </main>
-      <Footer />
+      {/* <Footer /> */}
     </div>
   )
 }

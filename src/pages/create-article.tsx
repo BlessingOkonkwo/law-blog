@@ -1,10 +1,11 @@
+import CreateArticleForm from "@/components/create-article/create-article-form";
 
 const CreateArticle = () => {
   return (
     <div>
-      Create Article Page!!!!!!!!!!!!
+      <CreateArticleForm />
     </div>
-  )
-}
+  );
+};
 
-export default CreateArticle
+export default CreateArticle;
