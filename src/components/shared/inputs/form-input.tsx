@@ -20,6 +20,7 @@ const FormInput: FC<ICustomInputProps> = ({
 }) => {
   const { control } = useFormContext();
   const [isFocus, setIsFocus] = useState<boolean>(false);
+  console.log(isFocus);
   return (
     <Controller
       name={name!}

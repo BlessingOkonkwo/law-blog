@@ -1,4 +1,4 @@
-import { FC, useState } from "react";
+import { FC } from "react";
 import InputErrorMessage from "../feedback/input-error-message";
 import { Controller, useFormContext } from "react-hook-form";
 import { ICustomInputTextAreaProps } from "@/components/types";
@@ -17,7 +17,6 @@ const ArticleDescriptionInput: FC<ICustomInputTextAreaProps> = ({
   ...props
 }) => {
   const { control } = useFormContext();
-  const [isFocus, setIsFocus] = useState<boolean>(false);
   return (
     <Controller
       name={name!}
@@ -31,8 +30,6 @@ const ArticleDescriptionInput: FC<ICustomInputTextAreaProps> = ({
                 name={name}
                 value={value}
                 onChange={onChange}
-                onFocus={() => setIsFocus(true)}
-                onBlur={() => setIsFocus(false)}
                 placeholder={placeholder ?? "Type here"}
                 id={name}
                 cols={30}

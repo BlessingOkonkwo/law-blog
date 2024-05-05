@@ -40,11 +40,11 @@ const CreateArticleForm = () => {
 
   const {
     handleSubmit,
-    formState: { errors, isDirty },
+    formState: { errors },
     reset,
   } = methods;
 
-  const [addArticle, { isLoading, isError, isSuccess }] =
+  const [addArticle, { isLoading }] =
     useAddArticleMutation();
 
   const onSubmit: SubmitHandler<ICreateArticlePayload> = (data) => {

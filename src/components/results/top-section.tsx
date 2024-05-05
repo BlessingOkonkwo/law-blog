@@ -4,7 +4,6 @@ import { yupResolver } from "@hookform/resolvers/yup";
 import SearchInput from "../shared/inputs/search-input";
 import Button from "../shared/controls/button";
 import PlusIcon from "../shared/icons/plus-icon";
-import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 
 interface ISearchArticlePayload {
@@ -19,7 +18,6 @@ const searchArticleFormSchema = Yup.object().shape({
 
 const TopSection = () => {
   const navigate = useNavigate();
-  const [searchValue, setSearchValue] = useState<string>("");
   const defaultValues = {
     articleTitle: "",
   };
@@ -34,7 +32,7 @@ const TopSection = () => {
 
   const {
     handleSubmit,
-    formState: { errors, isDirty },
+    formState: { errors },
   } = methods;
 
   const onSubmit: SubmitHandler<ISearchArticlePayload> = (data) => {

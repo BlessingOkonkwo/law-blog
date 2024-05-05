@@ -1,4 +1,4 @@
-import axios, { isCancel, isAxiosError } from "axios";
+import axios from "axios";
 
 const axiosArticles = axios.create({
   baseURL: "https://jsonplaceholder.typicode.com/",

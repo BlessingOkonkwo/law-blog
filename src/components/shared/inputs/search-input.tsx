@@ -1,5 +1,5 @@
 "use client";
-import React, { FC, useState } from "react";
+import { FC, useState } from "react";
 import { SearchInputIcon } from "@/components/shared/icons/search-input-icon";
 import { Input } from "./input";
 import { Controller, useFormContext } from "react-hook-form";

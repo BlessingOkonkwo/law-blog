@@ -1,4 +1,4 @@
-import { ReactElement, ReactNode } from "react";
+import { ReactElement } from "react";
 import { FieldError } from "react-hook-form";
 
 export interface IIconProps extends React.SVGAttributes<SVGElement> {

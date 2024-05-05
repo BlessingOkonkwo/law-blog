@@ -1,7 +1,7 @@
 import { IInputIconProps } from "@/components/types";
 import Hidden from "@/components/shared/data-display/hidden";
 
-export const SearchInputIcon = ({ focused, color }: IInputIconProps) => {
+export const SearchInputIcon = ({ focused }: IInputIconProps) => {
   return (
     <>
       <Hidden visible={focused as boolean}>

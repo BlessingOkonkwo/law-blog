@@ -11,9 +11,8 @@ import {
   setArticlesData,
   setUsers,
 } from "@/redux/slices/article-slice";
-import { useEffect, useState } from "react";
+import { useEffect } from "react";
 import { useGetUsersQuery } from "@/redux/services/user.api-slice";
-import { IArticleData } from "../types";
 import mergeAttorneyArticles from "@/lib/helpers/mergeAttorneyArticles";
 
 const ResultsTemplate = () => {
