@@ -1,7 +1,7 @@
 import { IInputIconProps } from "@/components/types";
 import Hidden from "@/components/shared/data-display/hidden";
 
-export const SearchInputIcon = ({ focused }: IInputIconProps) => {
+export const SearchInputIcon = ({ focused, color }: IInputIconProps) => {
   return (
     <>
       <Hidden visible={focused as boolean}>
@@ -14,13 +14,13 @@ export const SearchInputIcon = ({ focused }: IInputIconProps) => {
         >
           <path
             d="M19.27 11.0105C19.27 15.5724 15.5719 19.2705 11.01 19.2705C6.44813 19.2705 2.75 15.5724 2.75 11.0105C2.75 6.44862 6.44813 2.75049 11.01 2.75049C15.5719 2.75049 19.27 6.44862 19.27 11.0105Z"
-            fill="#08C168"
-            stroke="#08C168"
+            fill="#5D51C6"
+            stroke="#5D51C6"
             strokeWidth="1.5"
           />
           <path
             d="M21.9901 18.9505C21.6601 18.3405 20.9601 18.0005 20.0201 18.0005C19.3101 18.0005 18.7001 18.2905 18.3401 18.7905C17.9801 19.2905 17.9001 19.9605 18.1201 20.6305C18.5501 21.9305 19.3001 22.2205 19.7101 22.2705C19.7701 22.2805 19.8301 22.2805 19.9001 22.2805C20.3401 22.2805 21.0201 22.0905 21.6801 21.1005C22.2101 20.3305 22.3101 19.5605 21.9901 18.9505Z"
-            fill="#08C168"
+            fill="#5D51C6"
           />
         </svg>
       </Hidden>

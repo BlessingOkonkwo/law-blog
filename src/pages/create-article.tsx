@@ -1,10 +1,11 @@
 import CreateArticleForm from "@/components/create-article/create-article-form";
+import PageWrapper from "@/components/shared/data-display/page-wrapper";
 
 const CreateArticle = () => {
   return (
-    <div>
+    <PageWrapper pageTitle="Post Article">
       <CreateArticleForm />
-    </div>
+    </PageWrapper>
   );
 };
 

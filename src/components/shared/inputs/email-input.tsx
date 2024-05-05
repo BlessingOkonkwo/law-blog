@@ -1,21 +1,18 @@
-import { FC, useState } from "react";
+import React, { FC, useState } from "react";
 import InputErrorMessage from "../feedback/input-error-message";
-import { Controller, useFormContext } from "react-hook-form";
-import { ICustomInputProps } from "@/components/types";
-import Hidden from "@/components/shared/data-display/hidden";
-import { cn } from "@/lib/utils";
-import { Input } from "./input";
-import Label from "./label";
 import { FieldSet } from "./fieldset";
+import Label from "./label";
+import { Controller, useFormContext } from "react-hook-form";
+import { Input } from "./input";
+import { ICustomInputProps } from "@/components/types";
+import EmailInputIcon from "../icons/email-input-icon";
+import Hidden from "../data-display/hidden";
 
-const FormInput: FC<ICustomInputProps> = ({
+const EmailInput: FC<ICustomInputProps> = ({
   name,
   label,
   error,
   placeholder,
-  prefixIcon,
-  suffixIcon,
-  className,
   ...props
 }) => {
   const { control } = useFormContext();
@@ -26,7 +23,11 @@ const FormInput: FC<ICustomInputProps> = ({
       control={control}
       render={({ field: { value, name, onChange } }) => (
         <FieldSet>
-          <Label>{label}</Label>
+          {/* Label */}
+          <Hidden visible={!!label}>
+            <Label>{label}</Label>
+          </Hidden>
+
           <div className="w-full space-y-[4px]">
             <div className="relative w-full">
               <Input
@@ -36,22 +37,13 @@ const FormInput: FC<ICustomInputProps> = ({
                 onFocus={() => setIsFocus(true)}
                 onBlur={() => setIsFocus(false)}
                 variant={error ? "error" : "default"}
-                placeholder={placeholder ?? "Type here"}
-                className={cn(prefixIcon ? "pl-[34px]" : "pl-3", className)}
+                placeholder={placeholder ?? "example@gmail.com"}
                 {...props}
               />
               {/* prefix Icon */}
-              <Hidden visible={!!prefixIcon}>
-                <span className="absolute top-[15px] left-[12px]">
-                  {prefixIcon}
-                </span>
-              </Hidden>
-              {/* suffix Icon */}
-              <Hidden visible={!!suffixIcon}>
-                <span className="absolute top-[15px] right-[12px]">
-                  {suffixIcon}
-                </span>
-              </Hidden>
+              <span className="absolute top-[15px] left-[12px]">
+                <EmailInputIcon focused={error ? false : isFocus} />
+              </span>
             </div>
             <InputErrorMessage name={`${name}`} />
           </div>
@@ -61,4 +53,4 @@ const FormInput: FC<ICustomInputProps> = ({
   );
 };
 
-export default FormInput;
+export default EmailInput;
