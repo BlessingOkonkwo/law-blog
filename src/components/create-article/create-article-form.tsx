@@ -44,8 +44,9 @@ const CreateArticleForm = () => {
     reset,
   } = methods;
 
-  const [addArticle, { isLoading }] =
-    useAddArticleMutation();
+  console.log(errors);
+
+  const [addArticle, { isLoading }] = useAddArticleMutation();
 
   const onSubmit: SubmitHandler<ICreateArticlePayload> = (data) => {
     console.log("DATA TO SUBMIT: ", data);
@@ -68,6 +69,7 @@ const CreateArticleForm = () => {
           className="space-y-4 max-w-[675px] rounded-lg border bg-white px-6 py-4"
         >
           <FormInput
+            aria-label="author-name"
             label="Attorney Name"
             name="authorName"
             error={errors["authorName"]}
@@ -75,12 +77,14 @@ const CreateArticleForm = () => {
           />
 
           <EmailInput
+            aria-label="author-email"
             label="Email address"
             name="email"
             error={errors["email"]}
           />
 
           <FormInput
+            aria-label="article-title"
             label="Article Title"
             name="articleTitle"
             error={errors["articleTitle"]}
@@ -88,6 +92,7 @@ const CreateArticleForm = () => {
           />
 
           <ArticleDescriptionInput
+            aria-label="article-description"
             label="Article Description"
             name="articleDescription"
             error={errors["articleDescription"]}
