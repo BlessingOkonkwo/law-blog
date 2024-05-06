@@ -6,6 +6,9 @@ import ArticleDescriptionInput from "../shared/inputs/article-description-input"
 import EmailInput from "../shared/inputs/email-input";
 import Button from "../shared/controls/button";
 import { useAddArticleMutation } from "@/redux/services/get-articles.api-slice";
+import { useState } from "react";
+import SuccessDialog from "./success-dialog";
+import ErrorDialog from "./error-dialog";
 
 interface ICreateArticlePayload {
   articleTitle: string;
@@ -23,6 +26,9 @@ const createArticleFormSchema = Yup.object().shape({
 });
 
 const CreateArticleForm = () => {
+  const [successModal, setSuccessModal] = useState<boolean>(false);
+  const [errorModal, setErrorModal] = useState<boolean>(false);
+
   const defaultValues = {
     articleTitle: "",
     articleDescription: "",
@@ -44,8 +50,6 @@ const CreateArticleForm = () => {
     reset,
   } = methods;
 
-  console.log(errors);
-
   const [addArticle, { isLoading }] = useAddArticleMutation();
 
   const onSubmit: SubmitHandler<ICreateArticlePayload> = (data) => {
@@ -59,6 +63,11 @@ const CreateArticleForm = () => {
         console.log("Post added successfully");
         console.log(res);
         reset();
+        setSuccessModal(true);
+      })
+      .catch((error) => {
+        console.log("Error: ", error);
+        setErrorModal(true);
       });
   };
   return (
@@ -111,6 +120,15 @@ const CreateArticleForm = () => {
           </div>
         </form>
       </FormProvider>
+
+      <SuccessDialog
+        openModal={successModal}
+        closeModal={() => setSuccessModal(false)}
+      />
+      <ErrorDialog
+        openModal={errorModal}
+        closeModal={() => setErrorModal(false)}
+      />
     </div>
   );
 };
