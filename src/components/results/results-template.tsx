@@ -38,7 +38,7 @@ const ResultsTemplate = () => {
   }, [data, usersData, articles, users, query]);
 
   return (
-    <div className="h-full">
+    <div className="h-full flex flex-col items-center space-y-4 mx-auto">
       <TopSection query={query} setQuery={setQuery} />
       <div className="h-full flex flex-wrap justify-center gap-2">
         {isLoading && <Loading />}

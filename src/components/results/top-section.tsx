@@ -3,8 +3,7 @@ import * as Yup from "yup";
 import { yupResolver } from "@hookform/resolvers/yup";
 import SearchInput from "../shared/inputs/search-input";
 import Button from "../shared/controls/button";
-import PlusIcon from "../shared/icons/plus-icon";
-import { useNavigate } from "react-router-dom";
+import RefreshIcon from "../shared/icons/refresh-icon";
 
 interface IProps {
   query: string;
@@ -20,8 +19,7 @@ const searchArticleFormSchema = Yup.object().shape({
   ),
 });
 
-const TopSection = ({setQuery}: IProps) => {
-  const navigate = useNavigate();
+const TopSection = ({ setQuery }: IProps) => {
   const defaultValues = {
     searchValue: "",
   };
@@ -44,27 +42,28 @@ const TopSection = ({setQuery}: IProps) => {
     setQuery(data.searchValue);
   };
   return (
-    <div className="flex flex-col md:flex-row items-center justify-between gap-4 w-full my-4">
-      <div className="w-full">
-        <FormProvider {...methods}>
-          <form onSubmit={handleSubmit(onSubmit)} className="">
-            <SearchInput
-              name="searchValue"
-              placeholder="Search by article title or author"
-              error={errors["searchValue"]}
-            />
-          </form>
-        </FormProvider>
-      </div>
-
-      <div className="self-end">
-        <Button
-          className="flex items-center gap-2"
-          onClick={() => navigate("/create-article")}
+    <div className="w-full">
+      <FormProvider {...methods}>
+        <form
+          onSubmit={handleSubmit(onSubmit)}
+          className="w-full flex items-center gap-2"
         >
-          <PlusIcon color="white" /> Create New
-        </Button>
-      </div>
+          <SearchInput
+            name="searchValue"
+            placeholder="Search by article title or author"
+            error={errors["searchValue"]}
+            className="w-[200px]"
+          />
+          <div>
+            <Button className="h-full" type="submit" size="sm">
+              Search
+            </Button>
+          </div>
+          <Button size="sm" onClick={() => setQuery("")}>
+            <RefreshIcon />
+          </Button>
+        </form>
+      </FormProvider>
     </div>
   );
 };

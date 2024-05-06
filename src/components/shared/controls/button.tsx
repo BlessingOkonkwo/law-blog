@@ -9,7 +9,7 @@ const classes = {
   size: {
     xs: "py-2 px-4 text-xs",
     sm: "py-2 px-6 text-sm",
-    md: "py-3 px-8 text-md",
+    md: "py-3 px-8 text-base",
     lg: "py-3 px-10 text-lg",
     xl: "py-3 px-12 text-xl",
     "2xl": "py-[20px] px-[40px] text-2xl",
