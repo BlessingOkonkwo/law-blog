@@ -3,7 +3,9 @@ import * as Yup from "yup";
 import { yupResolver } from "@hookform/resolvers/yup";
 import SearchInput from "../shared/inputs/search-input";
 import Button from "../shared/controls/button";
-import RefreshIcon from "../shared/icons/refresh-icon";
+import SearchIcon from "../shared/icons/search-icon";
+import { useSearchParams } from "react-router-dom";
+import { useEffect } from "react";
 
 interface IProps {
   query: string;
@@ -20,6 +22,8 @@ const searchArticleFormSchema = Yup.object().shape({
 });
 
 const TopSection = ({ setQuery }: IProps) => {
+  const [searchParams, setSearchParams] = useSearchParams();
+
   const defaultValues = {
     searchValue: "",
   };
@@ -35,11 +39,20 @@ const TopSection = ({ setQuery }: IProps) => {
   const {
     handleSubmit,
     formState: { errors },
+    reset,
   } = methods;
+
+  const id = searchParams.get("search");
+  useEffect(() => {
+    if (id === null) {
+      reset();
+    }
+  }, [id]);
 
   const onSubmit: SubmitHandler<ISearchArticlePayload> = (data) => {
     console.log("DATA TO SUBMIT: ", data);
     setQuery(data.searchValue);
+    setSearchParams(`search=${data.searchValue}`);
   };
   return (
     <div className="w-full">
@@ -55,15 +68,15 @@ const TopSection = ({ setQuery }: IProps) => {
             className="w-[200px]"
           />
           <div>
-            <Button className="h-full" type="submit" size="sm">
-              Search
+            <Button className="h-full !px-3" type="submit" size="sm">
+              <SearchIcon />
             </Button>
           </div>
-          <Button size="sm" onClick={() => setQuery("")}>
-            <RefreshIcon />
-          </Button>
         </form>
       </FormProvider>
+      {/* <Button size="sm" className="!p-1" onClick={() => setQuery("")}>
+        <RefreshIcon />
+      </Button> */}
     </div>
   );
 };

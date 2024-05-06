@@ -8,7 +8,7 @@ export interface IArticlePayload {
 
 export const articlesApiSlice = baseApiSlice.injectEndpoints({
   endpoints: (builder) => ({
-    getArticles: builder.query<IArticle[], void>({
+    getArticles: builder.query<IArticle[], { search: string }>({
       query: () => ({
         url: `posts`,
         method: "GET",

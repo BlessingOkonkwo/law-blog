@@ -3,13 +3,16 @@ import { IArticle, IArticleData, IUser } from "@/components/types";
 export default function mergeAttorneyArticles(
   posts: IArticle[],
   authors: IUser[],
-  searchQuery: string // Add a parameter for the search query
+  searchQuery: string | null // Modify the type of searchQuery to accept null
 ): IArticleData[] {
+  // Check if searchQuery is null, then set it to an empty string
+  const normalizedSearchQuery = searchQuery ?? '';
+
   return posts
     .filter(post => {
       // Filter posts based on search query matching title or author name
-      return post.title.toLowerCase().includes(searchQuery.toLowerCase()) || 
-             authors.find(author => author.id === post.userId)?.name.toLowerCase().includes(searchQuery.toLowerCase());
+      return post.title.toLowerCase().includes(normalizedSearchQuery.toLowerCase()) || 
+             authors.find(author => author.id === post.userId)?.name.toLowerCase().includes(normalizedSearchQuery.toLowerCase());
     })
     .map((post) => {
       const author = authors.find((author) => author.id === post.userId);

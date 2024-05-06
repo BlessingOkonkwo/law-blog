@@ -14,12 +14,20 @@ import {
 import { useEffect, useState } from "react";
 import { useGetUsersQuery } from "@/redux/services/user.api-slice";
 import mergeAttorneyArticles from "@/lib/helpers/mergeAttorneyArticles";
+import { useSearchParams } from "react-router-dom";
+import NoResult from "./no-search-result";
 
 const ResultsTemplate = () => {
+  const [searchParams] = useSearchParams();
+  const id = searchParams.get("search");
+
   const dispatch = useDispatch();
   const [query, setQuery] = useState<string>("");
   //   const { data, loading, error } = useGetArticles();
-  const { data, isLoading, isSuccess, isError } = useGetArticlesQuery();
+  const { data, isLoading, isSuccess, isError } = useGetArticlesQuery(
+    { search: id ?? "" },
+    { refetchOnMountOrArgChange: true }
+  );
   const { data: usersData } = useGetUsersQuery();
 
   const { articles, users, articlesData } = useSelector(
@@ -30,17 +38,20 @@ const ResultsTemplate = () => {
     if (data && usersData && data.length > 0 && usersData?.length > 0) {
       dispatch(setArticles(data));
       dispatch(setUsers(usersData));
-      dispatch(setArticlesData(mergeAttorneyArticles(articles, users, query)));
+      dispatch(setArticlesData(mergeAttorneyArticles(articles, users, id)));
     }
     if (data && data.length > 0) {
       setArticlesData(["data"]);
     }
-  }, [data, usersData, articles, users, query]);
+  }, [data, usersData, articles, users, query, id]);
 
   return (
-    <div className="h-full flex flex-col items-center space-y-4 mx-auto">
+    <div className="h-full fle flex-col items-center space-y-4 mx-auto">
       <TopSection query={query} setQuery={setQuery} />
-      <div className="h-full flex flex-wrap justify-center gap-2" data-testid="articles-list">
+      <div
+        className="h-full flex flex-wrap justify-center gap-2"
+        data-testid="articles-list"
+      >
         {isLoading && <Loading />}
 
         {!isLoading &&
@@ -51,9 +62,11 @@ const ResultsTemplate = () => {
               title={post.title}
               description={post.body}
               author={post.name}
-              query={query}
+              query={id ?? ""}
             />
           ))}
+
+        {!isLoading && isSuccess && articlesData.length === 0 && <NoResult />}
         {!isLoading && isError && <Error />}
       </div>
     </div>
