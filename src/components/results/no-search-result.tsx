@@ -5,7 +5,7 @@ const NoResult = () => {
       <h3 className="text-lg md:text-2xl text-[#433A81] my-2">
         No data matches your search
       </h3>
-      <p className="text-sm md:text-base my-2">
+      <p className="text-sm md:text-base my-2 text-black">
         Go back or try searching for something else
       </p>
     </div>

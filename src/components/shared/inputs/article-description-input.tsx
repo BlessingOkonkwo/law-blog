@@ -34,7 +34,7 @@ const ArticleDescriptionInput: FC<ICustomInputTextAreaProps> = ({
                 id={name}
                 cols={30}
                 rows={10}
-                className={cn(className, "font-medium border rounded-lg outline-none p-4 w-full placeholder:text-[hsla(213,27%,84%,1)]")}
+                className={cn(className, "bg-white font-medium border rounded-lg outline-none p-4 w-full placeholder:text-[hsla(213,27%,84%,1)] text-[hsla(216,26%,30%,1)]")}
                 {...props}
               ></textarea>
             </div>

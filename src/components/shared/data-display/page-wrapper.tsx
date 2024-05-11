@@ -20,7 +20,7 @@ const PageWrapper = ({ pageTitle, children }: IProps) => {
         >
           <ArrowLeftIcon />
         </span>
-        <h1 className="font-bold text-4xl">{pageTitle}</h1>
+        <h1 className="font-bold text-4xl text-black">{pageTitle}</h1>
       </div>
 
       {children}

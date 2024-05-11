@@ -59,7 +59,7 @@ const TopSection = ({ setQuery }: IProps) => {
       <FormProvider {...methods}>
         <form
           onSubmit={handleSubmit(onSubmit)}
-          className="w-full flex items-center gap-2"
+          className="w-full flex items-start gap-2"
         >
           <SearchInput
             name="searchValue"

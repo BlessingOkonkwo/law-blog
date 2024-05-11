@@ -1,6 +1,6 @@
 const Error = () => {
   return (
-    <div className="h-full space-y-4 flex flex-col items-center justify-center text-center">
+    <div className="h-full space-y-4 flex flex-col items-center justify-center text-center min-h-[300px]">
       <p className="font-medium text-2xl text-[#433A81]">
         Something went wrong
       </p>

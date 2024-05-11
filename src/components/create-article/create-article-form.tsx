@@ -18,7 +18,7 @@ interface ICreateArticlePayload {
 
 const createArticleFormSchema = Yup.object().shape({
   articleTitle: Yup.string().required("Please enter a title for the article"),
-  articleDescription: Yup.string().required("Ariticle description is required"),
+  articleDescription: Yup.string().required("Article description is required"),
   authorName: Yup.string().required("Attorney name is required"),
   email: Yup.string()
     .email("Email must be a valid email address")
